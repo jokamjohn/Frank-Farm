@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffe5e5e5"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="johnkagga.me.frank_farm.ui.DetailActivity"
+    tools:showIn="@layout/activity_detail"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="10dp">
+
+        <include layout="@layout/animalname_card"/>
+
+        <include layout="@layout/capturedtag_card"/>
+
+        <include layout="@layout/reader_card"/>
+
+        <include layout="@layout/location_card"/>
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>
