@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="160dp"
+    android:layout_height="100dp"
     android:layout_margin="10dp"
     tools:showIn="@layout/content_detail">
 
@@ -15,11 +15,14 @@
         >
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/detailCard"
             android:layout_weight="1"
-            android:text="Location"
-            android:textSize="30sp"/>
+            android:text="Location"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@android:color/darker_gray" />
 
         <TextView
             android:id="@+id/location"

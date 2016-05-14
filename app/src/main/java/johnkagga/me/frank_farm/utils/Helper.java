@@ -5,6 +5,8 @@ import android.util.Log;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import johnkagga.me.frank_farm.R;
+
 public class Helper {
 
     /**
@@ -30,6 +32,33 @@ public class Helper {
                 return "Kanyibure";
             default:
                 return "UNKNOWN";
+
+        }
+    }
+
+    /**
+     *
+     * @param capturedTag
+     * @return
+     */
+    public static int animalImage(String capturedTag)
+    {
+        switch (capturedTag)
+        {
+            case "27209":
+                return R.drawable.img1;
+            case "28233":
+                return R.drawable.img2;
+            case "29001":
+                return R.drawable.img3;
+            case "4294953522":
+                return R.drawable.img4;
+            case "4294955080":
+                return R.drawable.img5;
+            case "28489":
+                return R.drawable.img6;
+            default:
+                return R.drawable.img7;
 
         }
     }
