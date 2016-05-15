@@ -1,5 +1,8 @@
 package johnkagga.me.frank_farm.utils;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.util.Log;
 
 import java.text.SimpleDateFormat;
@@ -69,5 +72,32 @@ public class Helper {
         Date date = new Date(timestamp * 1000);
         SimpleDateFormat smf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         return smf.format(date);
+    }
+
+    /**
+     * Encode user email to use it as a Firebase key (Firebase does not allow "." in the key name)
+     * Encoded email is also used as "userEmail", list and item "owner" value
+     */
+    public static String encodeEmail(String userEmail) {
+        return userEmail.replace(".", ",");
+    }
+
+    /**
+     * Checking for network access
+     *
+     * @return boolean
+     */
+    public static boolean isOnline(Context context)
+    {
+        ConnectivityManager manager = (ConnectivityManager)
+                context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = manager.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnectedOrConnecting())
+        {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }

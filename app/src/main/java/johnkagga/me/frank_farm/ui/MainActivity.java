@@ -2,23 +2,22 @@ package johnkagga.me.frank_farm.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.firebase.client.Firebase;
 import com.firebase.client.Query;
 
+import johnkagga.me.frank_farm.BaseActivity;
 import johnkagga.me.frank_farm.R;
 import johnkagga.me.frank_farm.adapters.FarmAreasListAdapter;
 import johnkagga.me.frank_farm.model.TrackData;
 import johnkagga.me.frank_farm.utils.Constants;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     public static final String LIST_ID = "list_id";
     private static final String TAG = "Mainactivity-log-tag";
@@ -35,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
 
         mTrackdataListView = (ListView) findViewById(R.id.areas_list_view);
 
+        TextView emptyTV = new TextView(this);
+        emptyTV.setText("No Data at the moment");
+
+        mTrackdataListView.setEmptyView(emptyTV);
+
         mTrackdataListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -42,19 +46,15 @@ public class MainActivity extends AppCompatActivity {
                 TrackData selectedTrackData = mTrackDataListAdapter.getItem(position);
                 String listId = mTrackDataListAdapter.getRef(position).getKey();
 
-                if (selectedTrackData != null)
-                {
-                    Intent intent = new Intent(MainActivity.this,DetailActivity.class);
+                if (selectedTrackData != null) {
+                    Intent intent = new Intent(MainActivity.this, DetailActivity.class);
 
-                    listId = mTrackDataListAdapter.getRef(position).getKey();
-
-                    intent.putExtra(LIST_ID,listId);
+                    intent.putExtra(LIST_ID, listId);
 
                     startActivity(intent);
                 }
             }
         });
-
 
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -65,28 +65,6 @@ public class MainActivity extends AppCompatActivity {
 //                        .setAction("Action", null).show();
 //            }
 //        });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
 
@@ -108,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         super.onDestroy();
         mTrackDataListAdapter.cleanup();
     }

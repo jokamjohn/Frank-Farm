@@ -8,7 +8,6 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,12 +18,13 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
+import johnkagga.me.frank_farm.BaseActivity;
 import johnkagga.me.frank_farm.R;
 import johnkagga.me.frank_farm.model.TrackData;
 import johnkagga.me.frank_farm.utils.Constants;
 import johnkagga.me.frank_farm.utils.Helper;
 
-public class DetailActivity extends AppCompatActivity {
+public class DetailActivity extends BaseActivity {
 
     protected TextView mAnimalName, mCapturedTag, mReader, mLocation;
     protected ImageView mAnimalImage;
